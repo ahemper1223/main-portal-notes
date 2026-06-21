@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+    <title>乐鱼体育 · 信息索引</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f4f9fc;
+            color: #1f2e3a;
+            line-height: 1.65;
+            padding: 2rem 1.25rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .page-wrap {
+            max-width: 860px;
+            margin: 0 auto;
+            width: 100%;
+            flex: 1;
+        }
+
+        /* 网格卡片 – 蓝绿点缀 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin: 2.5rem 0 1.8rem;
+        }
+
+        @media (min-width: 540px) {
+            .card-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 1.5rem 1.25rem;
+            box-shadow: 0 8px 18px rgba(0, 80, 100, 0.06);
+            border-left: 5px solid #2a9d8f;
+            transition: box-shadow 0.2s ease, transform 0.15s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 12px 28px rgba(42, 157, 143, 0.12);
+            transform: translateY(-2px);
+        }
+
+        .card h3 {
+            font-size: 1.1rem;
+            color: #1b5e5a;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: #2f4050;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #e0f2f1;
+            color: #156f6a;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 0.2rem 0.7rem;
+            border-radius: 30px;
+            letter-spacing: 0.03em;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero {
+            margin-bottom: 1.8rem;
+        }
+
+        .hero h1 {
+            font-size: 2rem;
+            font-weight: 650;
+            color: #134b47;
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero .subhead {
+            font-size: 1rem;
+            color: #3c6b67;
+            border-left: 4px solid #2a9d8f;
+            padding-left: 1rem;
+            background: rgba(42, 157, 143, 0.03);
+            border-radius: 0 8px 8px 0;
+            line-height: 1.5;
+        }
+
+        .meta-line {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            align-items: baseline;
+            margin: 1rem 0 1.2rem;
+            font-size: 0.85rem;
+            color: #54817a;
+        }
+
+        .meta-line span {
+            background: #dcedf0;
+            padding: 0.15rem 0.7rem;
+            border-radius: 30px;
+        }
+
+        .section-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #114e48;
+            margin: 2rem 0 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .section-title::before {
+            content: "📋";
+            font-size: 1.1rem;
+        }
+
+        .insight-block {
+            background: #eaf6f4;
+            border-radius: 16px;
+            padding: 1.4rem 1.6rem;
+            margin: 1.8rem 0 2rem;
+            border: 1px solid #c8e3de;
+            font-size: 0.98rem;
+        }
+
+        .insight-block strong {
+            color: #1a6b5f;
+        }
+
+        .insight-block .quote-mark {
+            font-size: 2rem;
+            line-height: 0.8;
+            color: #2a9d8f;
+            opacity: 0.5;
+            margin-right: 0.3rem;
+        }
+
+        .faq-mini {
+            margin: 2rem 0 1.2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 20px;
+            padding: 1rem 1.3rem;
+            box-shadow: 0 2px 8px rgba(0,60,70,0.04);
+            border: 1px solid #dcf0ed;
+        }
+
+        .faq-item q {
+            font-weight: 500;
+            color: #16544e;
+        }
+
+        .faq-item p {
+            margin-top: 0.3rem;
+            font-size: 0.9rem;
+            color: #2e4c47;
+        }
+
+        .inline-link-wrapper {
+            background: #ffffffd9;
+            padding: 0.6rem 0.9rem;
+            border-radius: 60px;
+            display: inline-block;
+            border: 1px solid #bddad4;
+            font-size: 0.9rem;
+            margin: 1rem 0 0.2rem;
+        }
+
+        a {
+            color: #16786e;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1.5px dotted #7abfb6;
+            transition: border-color 0.2s, color 0.15s;
+        }
+
+        a:hover,
+        a:focus {
+            color: #0e554b;
+            border-bottom-style: solid;
+            border-color: #0b6e62;
+        }
+
+        .footer-note {
+            margin-top: 3.2rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid #cde3df;
+            font-size: 0.8rem;
+            color: #4b716b;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        @media (max-width: 400px) {
+            body {
+                padding: 1.25rem 1rem;
+            }
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+            .card {
+                padding: 1.1rem;
+            }
+        }
+
+        /* 点缀小元素 */
+        .accent-dot {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background: #2a9d8f;
+            border-radius: 50%;
+            margin-right: 6px;
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrap">
+
+    <!-- hero 简洁博客式 -->
+    <div class="hero">
+        <h1>乐鱼体育 · 延伸与对照</h1>
+        <div class="subhead">
+            日常查询、信息对照、话题索引 —— 一份围绕体育资讯的简明笔记
+        </div>
+        <div class="meta-line">
+            <span>📌 今日主题</span>
+            <span>⏱ 阅读约 4 分钟</span>
+            <span>🏷️ 体育 · 索引</span>
+        </div>
+    </div>
+
+    <!-- 导语 + 自然链接 -->
+    <p style="margin-bottom: 1rem;">
+        在信息碎片化的日常中，我们常常需要快速定位一个话题的源头或对照不同来源的说法。无论是赛事动态、活动记录还是平台背景，借助清晰的索引能节省不少时间。以 
+        <a href="https://main-portal-leyu.com.cn">乐鱼体育</a> 为例，它的信息结构本身也呈现出一种可翻阅、可对照的特点，适合作为一条延伸阅读的起点。
+    </p>
+
+    <!-- 网格卡片：从日常查询与延伸阅读切入 -->
+    <div class="card-grid">
+        <div class="card">
+            <span class="badge">🔍 日常查询</span>
+            <h3>快速定位信息源</h3>
+            <p>当需要核对赛事安排或活动说明时，优先查阅主站内的分类索引，比零散搜索更高效。建议把常用页面添加书签。</p>
+        </div>
+        <div class="card">
+            <span class="badge">📑 对照阅读</span>
+            <h3>多栏目交叉参考</h3>
+            <p>将不同板块的相同关键词进行对照（如“体育”“活动”“说明”），能帮助理解整体逻辑，避免断章取义。</p>
+        </div>
+        <div class="card">
+            <span class="badge">🧩 延伸脉络</span>
+            <h3>从一条链接出发</h3>
+            <p>每个页面都可能关联着更多子话题。沿着导航栏逐层展开，会逐步拼凑出更完整的信息视图。</p>
+        </div>
+        <div class="card">
+            <span class="badge">📎 记录与整理</span>
+            <h3>建立个人笔记流</h3>
+            <p>摘录关键段落、记录访问时间，配合自己的批注，能让下一次查阅变得更有方向感。</p>
+        </div>
+    </div>
+
+    <!-- 引用提示块 (知识型) -->
+    <div class="insight-block">
+        <span class="quote-mark">“</span>
+        <strong>延伸阅读的乐趣，在于发现意料之外的关联。</strong> 
+        当你在一个站点内反复对照不同栏目时，常会注意到之前忽略的细节。比如某个活动说明的措辞变化、时间更新，或是板块之间的引用关系——这些细微之处往往藏着最有价值的信息。
+        <span style="display: block; margin-top: 0.6rem; font-size: 0.85rem; color: #3e6b62;">—— 摘自《信息查考笔记》· 体育索引篇</span>
+    </div>
+
+    <!-- 正文段落：多段承接 -->
+    <section>
+        <div class="section-title">从一条索引开始</div>
+        <p>
+            任何信息查询的第一步都是确认“去哪里找”。对于体育类的综合平台，通常可以在导航区看到“体育”“赛事”“资讯”“服务”等一级分类。以 
+            <a href="https://main-portal-leyu.com.cn">乐鱼体育</a> 为例，其主页布局将主要入口集中在上方和侧边，便于快速切入主题。
+        </p>
+        <p style="margin-top: 1rem;">
+            第二步是<strong>对照</strong>。同一主题在不同栏目下的表述可能略有差异——例如某个活动的规则说明，在“公告”和“帮助中心”里可能会呈现不同详略。这时将两个页面并排对照，能更全面地理解内容边界。
+        </p>
+        <p style="margin-top: 1rem;">
+            第三步是<strong>延伸</strong>。当你锁定一个感兴趣的关键词后，不妨用它再搜索站内相关内容，常常会找到相关的历史存档或专题汇编。这种“滚雪球”式的查阅，会让笔记越来越丰满。
+        </p>
+    </section>
+
+    <!-- FAQ 摘要 -->
+    <div class="section-title" style="margin-top: 2.2rem;">常见查阅要点</div>
+    <div class="faq-mini">
+        <div class="faq-item">
+            <q>怎样快速找到某类体育活动的说明页？</q>
+            <p>使用站内搜索框，或者直接进入“体育”大类后再按子分类筛选。多数平台会把最核心的入口放在首页第一屏。</p>
+        </div>
+        <div class="faq-item">
+            <q>不同时间看到的内容可能不一样，如何追溯？</q>
+            <p>可以留意页面底部的更新日期；如果平台有历史公告存档，优先查阅存档版本。也建议自己截图或摘录关键字段。</p>
+        </div>
+        <div class="faq-item">
+            <q>延伸阅读时，怎样避免信息过载？</q>
+            <p>每次只聚焦一个主题（例如“活动规则”或“赛事日历”），记录下当前页面的核心句，再逐步扩展。好的笔记本身就是过滤器。</p>
+        </div>
+    </div>
+
+    <!-- 再次嵌入链接（自然） -->
+    <div style="margin: 1.8rem 0 1rem; padding: 0.2rem 0;">
+        <span style="background: #e5f3f0; padding: 0.2rem 1rem 0.2rem 1rem; border-radius: 30px; font-size: 0.85rem; color: #0e5c52;">🔗 关联站点 · 
+            <a href="https://main-portal-leyu.com.cn" style="border-bottom: 1px solid #328d81;">乐鱼体育</a>
+        </span>
+        <span style="margin-left: 0.6rem; font-size: 0.8rem; color: #4e7b73;">—— 信息索引的起点之一</span>
+    </div>
+
+    <!-- 页脚 -->
+    <div class="footer-note">
+        <span>📄 本文档仅为个人知识整理，不构成任何引导或承诺</span>
+        <span>更新 · 2025 · 索引版</span>
+    </div>
+
+</div>
+</body>
+</html>
